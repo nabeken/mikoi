@@ -115,9 +115,10 @@ func main() {
 
 func serve(conn net.Conn, errCh chan<- error) {
 	defer conn.Close()
+	conn.SetDeadline(time.Now().Add(opts.Timeout))
 
 	// opening a connection to server
-	pconn, err := net.Dial("tcp", opts.Host+":"+opts.Port)
+	pconn, err := net.DialTimeout("tcp", opts.Host+":"+opts.Port, opts.Timeout)
 	if err != nil {
 		errCh <- err
 		return
@@ -168,7 +169,6 @@ func server(ln net.Listener, errCh chan<- error) {
 			errCh <- err
 			continue
 		}
-		conn.SetDeadline(time.Now().Add(opts.Timeout))
 
 		if opts.Verbose {
 			fmt.Fprintln(os.Stderr, "mikoi accepts a connection from plugin")
