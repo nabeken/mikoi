@@ -13,11 +13,17 @@ mikoi launches a proxy server lisening to an [ephemeral port](http://www.ncftp.c
 mikoi adds a ProxyProtocol header to traffic comes from a plugin and proxies to real server.
 
 ```text
-                            +---------+            +----------+
- +-----   forking   <------ |         | <--------- |          |
- |                          |  mikoi  |            |  server  | (proxy protocol enabled)
- +--> 127.0.0.1:12345 ----> |         | ---------> |          |
-                            +---------+ w/ header  +----------+
+        +----------+
+  +---> |  plugin  | forked by mikoi
+  |     +----------+
+  |       /|\   |
+  |        |    |
+  |        |   \|/
+  |      +---------+            +----------+
+  |      |         | <--------- |          |
+  +----- |  mikoi  |            |  server  | (proxy protocol enabled)
+         |         | ---------> |          |
+         +---------+ w/ header  +----------+
 ```
 
 ## Installation
