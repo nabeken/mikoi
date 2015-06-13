@@ -47,8 +47,8 @@ Application Options:
   -H, --hostname=   host name
   -p, --port=       port number
   -t, --timeout=    connection times out (10s)
-  -V, --verbose     verbose (false)
-  -P, --proxyproto  use ProxyProto (true)
+  -V, --verbose     verbose
+  -P, --proxyproto  use ProxyProto
 
 Help Options:
   -h, --help        Show this help message
@@ -56,6 +56,7 @@ Help Options:
 
 ```sh
 $ mikoi \
+  -P \
   -H smtp.example.com \
   -p 25 \
   -- /usr/lib/nagios/plugins/check_smtp -H 127.0.0.1 -p {} -w 0.5 -c 1.0
