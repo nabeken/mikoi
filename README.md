@@ -1,5 +1,7 @@
 # mikoi
 
+[![Build Status](https://travis-ci.org/nabeken/mikoi.svg)](https://travis-ci.org/nabeken/mikoi)
+
 mikoi is a [HAProxy's proxy protocol](http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt) enabler for command line tools.
 
 It is designed to work to monitor ProxyProtocol enabled server with usual monitoring plugins such as nagios-plugins and sensu-plugins.
