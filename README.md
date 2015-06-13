@@ -39,6 +39,22 @@ go get -u github.com/nabeken/mikoi
 ## Usage
 
 ```sh
+$ miko -h
+Usage:
+  mikoi [OPTIONS]
+
+Application Options:
+  -H, --hostname=   host name
+  -p, --port=       port number
+  -t, --timeout=    connection times out (10s)
+  -V, --verbose     verbose (false)
+  -P, --proxyproto  use ProxyProto (true)
+
+Help Options:
+  -h, --help        Show this help message
+```
+
+```sh
 $ mikoi \
   -H smtp.example.com \
   -p 25 \
@@ -46,3 +62,16 @@ $ mikoi \
 ```
 
 `{}` will be replaced with an ephemeral port that mikoi is listening to.
+
+If you omit command line arguments for plugin, mikoi runs in proxy server mode:
+
+```sh
+$ mikoi -V -H smtp.example.com -p 25
+cmd args: []
+mikoi is now running as proxy server mode
+mikoi is now listening to 63568
+mikoi is launching server
+
+// You can connect to 63568 by any clients
+$ telnet 127.0.0.1 63568
+```
