@@ -1,0 +1,14 @@
+FROM ubuntu:15.04
+MAINTAINER TANABE Ken-ichi <nabeken@tknetworks.org>
+
+RUN apt-get update && \
+  apt-get upgrade && \
+  apt-get install -y postfix rsyslog && \
+  cp /usr/share/postfix/main.cf.debian /etc/postfix/main.cf && \
+  postconf -e smtpd_upstream_proxy_protocol=haproxy
+
+EXPOSE 25
+
+COPY run.sh /run.sh
+
+CMD ["/run.sh"]
