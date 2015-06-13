@@ -39,7 +39,10 @@ go get -u github.com/nabeken/mikoi
 ## Usage
 
 ```sh
-$ mikoi -H smtp.example.com -p 25 -- /usr/lib/nagios/plugins/check_smtp -H 127.0.0.1 -p {} -w 0.5 -c 1.0
+$ mikoi \
+  -H smtp.example.com \
+  -p 25 \
+  -- /usr/lib/nagios/plugins/check_smtp -H 127.0.0.1 -p {} -w 0.5 -c 1.0
 ```
 
 `{}` will be replaced with an ephemeral port that mikoi is listening to.
