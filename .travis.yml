@@ -18,10 +18,10 @@ deploy:
   api_key:
     secure: tqngYkVX3956jSzdsE68vJb5w298J9hANuNPkVxVSKhaYHRFw5JJvng7Tqer5kd5aUe+fQ5d3HqT9woZh1HgTlluWDLzhE8S4ia3NbJcvxpQRjfZQLNMi3NQXpo/qoy84JGVN32316NdtY5Us4x3SFzCvw8v1H/pMIjAja48O+41ZsCUdVW+gq8436+FoEltVbFzwj6ZxsqG7gVQmb3wNyyedss6WFgcIh4b7l8109VEB1iDwMpccM97AgfkPJVqHjzF0erB0+jvRf4ls1GVte1VLiIrZ042A5IrKSj7AxSO3ZgCMflXqSHzuAdWB0FZf79L351VjaLuley/aQ/bp8/sZGRz1bQ6mplCZIS3h+LJGRvUM88x3jRh45VIo9oqE2xaq+HHF+/BNtOlKLRvwDcCGxZFY3HeQmaGbfvz/hz2KBFryHHvt+TZqurKth2cwKSEyu+T3GnosfzcPONzPXHXRpT3B+XSk1UHNdWeH99HzNBqMlU7I+KDctKKL0JiArtxrtiG2PLys5epW+h1NG71iKyGUS1mT0QHKjbVsTRj5FO19NXW7EGsZceLfRBSH/qHXpNQhx8tth4AVxezGIttOTqUBkslzd4yCfQSqJ4Nb4XSU6idxKen9bQBkHaykvKG+hxPGKAJDYxh8p3S1itVGm5xdQthOkk6p2ISIH4=
   file:
-    - snapshot/go-check-smtp_darwin_amd64.zip
-    - snapshot/go-check-smtp_freebsd_amd64.zip
-    - snapshot/go-check-smtp_linux_amd64.tar.gz
-    - snapshot/go-check-smtp_windows_386.zip
+    - snapshot/mikoi_darwin_amd64.zip
+    - snapshot/mikoi_freebsd_amd64.zip
+    - snapshot/mikoi_linux_amd64.tar.gz
+    - snapshot/mikoi_windows_386.zip
   on:
     tags: true
-    repo: nabeken/go-check-smtp
+    repo: nabeken/mikoi
