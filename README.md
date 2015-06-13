@@ -39,7 +39,7 @@ go get -u github.com/nabeken/mikoi
 ## Usage
 
 ```sh
-$ miko -h
+$ mikoi -h
 Usage:
   mikoi [OPTIONS]
 
