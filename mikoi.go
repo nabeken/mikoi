@@ -24,9 +24,9 @@ var opts struct {
 
 	Timeout time.Duration `short:"t" long:"timeout" description:"connection times out" default:"10s"`
 
-	Verbose bool `short:"V" long:"verbose" description:"verbose" default:"false"`
+	Verbose bool `short:"V" long:"verbose" description:"verbose"`
 
-	ProxyProto bool `short:"P" long:"proxyproto" description:"use ProxyProto" default:"true"`
+	ProxyProto bool `short:"P" long:"proxyproto" description:"use ProxyProto"`
 }
 
 // When there is no argument for command line, mikoi is in proxy server mode.
