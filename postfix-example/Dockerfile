@@ -3,7 +3,7 @@ MAINTAINER TANABE Ken-ichi <nabeken@tknetworks.org>
 
 RUN apt-get update && \
   apt-get upgrade && \
-  apt-get install -y postfix rsyslog && \
+  apt-get install -y postfix rsyslog nagios-plugins && \
   cp /usr/share/postfix/main.cf.debian /etc/postfix/main.cf && \
   postconf -e smtpd_upstream_proxy_protocol=haproxy
 
