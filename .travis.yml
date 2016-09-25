@@ -21,6 +21,7 @@ deploy:
     - snapshot/mikoi_freebsd_amd64.zip
     - snapshot/mikoi_linux_amd64.tar.gz
     - snapshot/mikoi_windows_386.zip
+    - snapshot/mikoi_windows_amd64.zip
   on:
     tags: true
     repo: nabeken/mikoi
