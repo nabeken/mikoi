@@ -10,7 +10,6 @@ script:
 
 before_deploy:
   - go get github.com/laher/goxc
-  - goxc -t -bc="freebsd,amd64 linux,amd64 windows,386 darwin,amd64"
   - goxc -tasks='xc archive' -bc="freebsd,amd64 linux,amd64 windows,386 darwin,amd64" -d .
 
 deploy:
