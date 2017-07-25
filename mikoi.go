@@ -27,6 +27,7 @@ var opts struct {
 	Verbose bool `short:"V" long:"verbose" description:"verbose"`
 
 	ProxyProto bool `short:"P" long:"proxyproto" description:"use ProxyProto"`
+	ProxyProtoSrc string `long:"proxyproto-src" description:"Source address for ProxyProto"`
 }
 
 // When there is no argument for command line, mikoi is in proxy server mode.
@@ -132,7 +133,18 @@ func serve(conn net.Conn, errCh chan<- error) {
 
 	// Upgrade pconn to use ProxyProtocol
 	if opts.ProxyProto {
-		pconn = &ProxyConn{Conn: pconn}
+		var src net.Addr
+
+		if opts.ProxyProtoSrc != "" {
+			src = Addr{net.ParseIP(opts.ProxyProtoSrc)}
+		} else {
+			src, _, _ := net.SplitHostPort(pconn.LocalAddr().String())
+		}
+
+		pconn = &ProxyConn{
+			Conn: pconn,
+			Src: src,
+		}
 	}
 
 	// proxying a connection from plugin to server
