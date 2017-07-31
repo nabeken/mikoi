@@ -9,7 +9,6 @@ import (
 
 type ProxyConn struct {
 	net.Conn
-	Src net.Addr
 
 	once sync.Once
 }
@@ -34,7 +33,7 @@ func (c *ProxyConn) Write(b []byte) (int, error) {
 
 func (c *ProxyConn) writeProxyProtocolHeader() error {
 	s := c.Conn.LocalAddr()
-	_, sport, err := net.SplitHostPort(s.String())
+	saddr, sport, err := net.SplitHostPort(s.String())
 	if err != nil {
 		return err
 	}
@@ -59,6 +58,6 @@ func (c *ProxyConn) writeProxyProtocolHeader() error {
 		return errors.New("proxyconn: unknown length")
 	}
 
-	_, err = fmt.Fprintf(c.Conn, "PROXY %s %s %s %s %s\r\n", tcpStr, c.Src, daddr, sport, dport)
+	_, err = fmt.Fprintf(c.Conn, "PROXY %s %s %s %s %s\r\n", tcpStr, saddr, daddr, sport, dport)
 	return err
 }
