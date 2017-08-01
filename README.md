@@ -44,14 +44,15 @@ Usage:
   mikoi [OPTIONS]
 
 Application Options:
-  -H, --hostname=   host name
-  -p, --port=       port number
-  -t, --timeout=    connection times out (10s)
-  -V, --verbose     verbose
-  -P, --proxyproto  use ProxyProto
+  -H, --hostname=       host name
+  -p, --port=           port number
+  -t, --timeout=        connection times out (default: 10s)
+  -V, --verbose         verbose
+  -P, --proxyproto      use ProxyProto
+      --proxyproto-src= Source address for ProxyProto
 
 Help Options:
-  -h, --help        Show this help message
+  -h, --help            Show this help message
 ```
 
 ```sh
