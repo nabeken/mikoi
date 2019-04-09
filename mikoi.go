@@ -26,8 +26,9 @@ var opts struct {
 
 	Verbose bool `short:"V" long:"verbose" description:"verbose"`
 
-	ProxyProto    bool   `short:"P" long:"proxyproto" description:"use ProxyProto"`
-	ProxyProtoSrc string `long:"proxyproto-src" description:"Source address for ProxyProto"`
+	ProxyProto        bool   `short:"P" long:"proxyproto" description:"use ProxyProto"`
+	ProxyProtoVersion int    `long:"proxyproto-version" description:"specify ProxyProtocol version" default:"1"`
+	ProxyProtoSrc     string `long:"proxyproto-src" description:"Source address for ProxyProto"`
 }
 
 // When there is no argument for command line, mikoi is in proxy server mode.
@@ -148,6 +149,8 @@ func serve(conn net.Conn, errCh chan<- error) {
 
 		pconn = &ProxyConn{
 			Conn: &mikoiConn{Conn: pconn, Src: src},
+
+			version: opts.ProxyProtoVersion,
 		}
 	}
 

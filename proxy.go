@@ -2,15 +2,18 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"net"
+	"strconv"
 	"sync"
+
+	"github.com/nabeken/go-proxyproto"
 )
 
 type ProxyConn struct {
 	net.Conn
 
-	once sync.Once
+	version int
+	once    sync.Once
 }
 
 func (c *ProxyConn) Read(b []byte) (int, error) {
@@ -33,13 +36,13 @@ func (c *ProxyConn) Write(b []byte) (int, error) {
 
 func (c *ProxyConn) writeProxyProtocolHeader() error {
 	s := c.Conn.LocalAddr()
-	saddr, sport, err := net.SplitHostPort(s.String())
+	saddr, sportStr, err := net.SplitHostPort(s.String())
 	if err != nil {
 		return err
 	}
 
 	d := c.Conn.RemoteAddr()
-	daddr, dport, err := net.SplitHostPort(d.String())
+	daddr, dportStr, err := net.SplitHostPort(d.String())
 	if err != nil {
 		return err
 	}
@@ -49,15 +52,27 @@ func (c *ProxyConn) writeProxyProtocolHeader() error {
 		return errors.New("proxyconn: must be tcp or tcp6")
 	}
 
-	var tcpStr string
+	sport, _ := strconv.Atoi(sportStr)
+	dport, _ := strconv.Atoi(dportStr)
+
+	hdr := &proxyproto.Header{
+		Version: c.version,
+		SrcAddr: net.ParseIP(saddr),
+		DstAddr: net.ParseIP(daddr),
+		SrcPort: uint16(sport),
+		DstPort: uint16(dport),
+
+		Command: proxyproto.PROXY,
+	}
+
 	if rip4 := raddr.IP.To4(); len(rip4) == net.IPv4len {
-		tcpStr = "TCP4"
+		hdr.TransportProtocol = proxyproto.TCPv4
 	} else if len(raddr.IP) == net.IPv6len {
-		tcpStr = "TCP6"
+		hdr.TransportProtocol = proxyproto.TCPv6
 	} else {
 		return errors.New("proxyconn: unknown length")
 	}
 
-	_, err = fmt.Fprintf(c.Conn, "PROXY %s %s %s %s %s\r\n", tcpStr, saddr, daddr, sport, dport)
+	_, err = hdr.WriteTo(c.Conn)
 	return err
 }
