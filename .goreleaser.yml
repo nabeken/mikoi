@@ -16,11 +16,6 @@ builds:
     goarch:
       - amd64
       - arm64
-    overrides:
-      - goos: darwin
-        goarch: arm64
-        env:
-          - CGO_ENABLED=1
 checksum:
   name_template: 'checksums.txt'
 snapshot:
