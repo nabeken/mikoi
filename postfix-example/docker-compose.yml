@@ -1,0 +1,6 @@
+services:
+  postfix:
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - "10025:25"
