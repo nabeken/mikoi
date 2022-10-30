@@ -1,5 +1,5 @@
 #!/bin/bash
-service rsyslog start
+rsyslogd
 service postfix start
 
 while true; do
