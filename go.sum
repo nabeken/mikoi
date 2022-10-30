@@ -1,4 +1,6 @@
 github.com/jessevdk/go-flags v1.5.0 h1:1jKYvbxEjfUl0fmqTCOfonvskHHXMjBySTLW4y9LFvc=
 github.com/jessevdk/go-flags v1.5.0/go.mod h1:Fw0T6WPc1dYxT4mKEZRfG5kJhaTDP9pj1c2EWnYs/m4=
+github.com/nabeken/go-proxyproto v0.0.0-20190426043659-7d2e1e3f3cd2 h1:1wTbWEN8quU14CeIryVm4E7OfUHJaF/YYbWXSUCHykQ=
+github.com/nabeken/go-proxyproto v0.0.0-20190426043659-7d2e1e3f3cd2/go.mod h1:AldBILaHTkWxcFiSU6U8xTMNTDZNOo6gretQzi6JZGk=
 golang.org/x/sys v0.0.0-20210320140829-1e4c9ba3b0c4 h1:EZ2mChiOa8udjfp6rRmswTbtZN/QzUQp4ptM4rnjHvc=
 golang.org/x/sys v0.0.0-20210320140829-1e4c9ba3b0c4/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
