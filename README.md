@@ -1,6 +1,6 @@
 # mikoi
 
-[![Build Status](https://travis-ci.org/nabeken/mikoi.svg)](https://travis-ci.org/nabeken/mikoi)
+[![Go](https://github.com/nabeken/mikoi/actions/workflows/go.yml/badge.svg)](https://github.com/nabeken/mikoi/actions/workflows/go.yml)
 
 mikoi is a [HAProxy's proxy protocol](http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt) enabler for command line tools.
 
@@ -68,7 +68,7 @@ $ mikoi \
 If you omit command line arguments for plugin, mikoi runs in proxy server mode:
 
 ```sh
-$ mikoi -V -H smtp.example.com -p 25
+$ mikoi -V -H smtp.example.com -p 25 -P
 cmd args: []
 mikoi is now running as proxy server mode
 mikoi is now listening to 63568
